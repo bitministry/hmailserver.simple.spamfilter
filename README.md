@@ -1,5 +1,5 @@
 # hmailserver.simple.spamfilter
-simple local spam filter for hMailServer
+simple local spam filter for hMailServer, to exclude specific senders, domains or emails containing specific text in subject or domain - **INSTANTLY!**
 
 
 # USAGE 
