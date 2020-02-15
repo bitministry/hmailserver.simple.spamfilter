@@ -49,33 +49,28 @@ when you change hMailServer/Events/EventHandlers.vbs
 
     <add key="debug" value="true" /> 
 
-    <add key="addReplyPathToBottom" value="true" />
-	
+*log entries will be added Event Viewer > Application log *
 
+    <add key="addReplyPathToBottom" value="true" />
 
   </appSettings>
 
 
-
-
 ### MSSQL setup
-```
+```tsql
 
 CREATE TABLE [dbo].[bitministry_spam_filter ](
 	[spam_filter] [varchar](22) NOT NULL,
 	[spam_value] [varchar](222) NOT NULL,
 	[created] [datetime] NOT NULL,
 	[author] [varchar](222) NULL
-) ON [PRIMARY]
-
-GO
-
+) 
 
 ALTER TABLE [dbo].[bitministry_spam_filter ] ADD  CONSTRAINT [DF_bitmin_spam_filter_created]  DEFAULT (getdate()) FOR [created]
 GO
 
 
-ALTER proc [dbo].[sp_check_spam]
+CREATE proc [dbo].[sp_check_spam]
 	@newSpamFilter varchar(22), 
 	@newSpamFilterValue varchar(222), 
 	@fromEmail varchar(222), 
@@ -83,16 +78,6 @@ ALTER proc [dbo].[sp_check_spam]
 	@body ntext,
 	@replyTo varchar(222) = null 
 as 
-
-/* C# 
-		sql.AddWithValue("@newSpamFilter", newSpamFilter);
-		sql.AddWithValue("@newSpamFilterValue", newSpamFilterValue);
-		sql.AddWithValue("@fromEmail", oMessage.FromAddress);
-		sql.AddWithValue("@subject", oMessage.FromAddress);
-		sql.AddWithValue("@body", oMessage.FromAddress);
-		oMessage.Subject = sql.ExecuteScalar("sp_check_spam") + oMessage.Subject;
-
-		*/
 
 		
 	-- replace LIKE pattern reserved characters 
