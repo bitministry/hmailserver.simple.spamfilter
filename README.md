@@ -2,7 +2,7 @@
 simple local spam filter for hMailServer
 
 
-#USAGE 
+# USAGE 
 
 To add SENDER RULE as spammer, simply forward the email to configured address (eg spam-sender@mydomain.com) 
 All incoming emails where sender address EQUALS "bob.thespammer@gmail.com" will be moved to Trash 
@@ -32,7 +32,7 @@ when you change hMailServer/Events/EventHandlers.vbs
 	hMailserver>settings>advanced>scripts>reload scripts 
 
 
-###BitMinistry.hMailServer.SpamHandler.dll.config
+### BitMinistry.hMailServer.SpamHandler.dll.config
 
   <connectionStrings>
     <add name="main"
@@ -59,7 +59,7 @@ when you change hMailServer/Events/EventHandlers.vbs
 
 
 ### MSSQL setup
-
+```
 
 CREATE TABLE [dbo].[bitministry_spam_filter ](
 	[spam_filter] [varchar](22) NOT NULL,
@@ -118,4 +118,4 @@ as
 	if exists ( select * from bitministry_spam_filter where spam_filter = 'bodyToSpam' and @body like '%'+ spam_value + '%')
 		select '*bitSpam* body: '
 
-
+```
