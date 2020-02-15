@@ -36,6 +36,10 @@
     <AssemblyOriginatorKeyFile>BitMinistry.hMailServer.SpamHandler.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BitMinistry.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1dff5e909799adf8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BitMinistry.Common\bin\Debug\BitMinistry.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -66,6 +70,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="mssql setup.sql" />
     <Content Include="EventHandler.vbs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
