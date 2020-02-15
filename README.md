@@ -4,16 +4,16 @@ simple local spam filter for hMailServer
 
 # USAGE 
 
-To add SENDER RULE as spammer, simply forward the email to configured address (eg spam-sender@mydomain.com) 
+To add SENDER RULE as spammer, **simply forward the email** to configured address (eg spam-sender@mydomain.com) 
 All incoming emails where sender address EQUALS "bob.thespammer@gmail.com" will be moved to Trash 
 
-To add DOMAIN RULE as spammer, simply forward the email to configured address (eg spam-domain@mydomain.com)
+To add DOMAIN RULE as spammer, **simply forward the email** to configured address (eg spam-domain@mydomain.com)
 All incoming emails where sender address TSQL LIKE "%spammerdomain.com" will be moved to Trash 
 
-To add SUBJECT RULE, trim the line in subject and forward the email (eg spam-subject@mydomain.com)
+To add SUBJECT RULE, **trim the line in subject and forward the email** (eg spam-subject@mydomain.com)
 All incoming emails where subject CONTAINS "<trimmed string from subject>" will be moved to Trash 
 
-To add BODY RULE, trim the line in body and forward the email (eg spam-body@mydomain.com)
+To add BODY RULE, **trim the line in body and forward the email** (eg spam-body@mydomain.com)
 All incoming emails where body CONTAINS "<trimmed string from body>" will be moved to Trash 
 
 
@@ -49,7 +49,7 @@ when you change hMailServer/Events/EventHandlers.vbs
 
     <add key="debug" value="true" /> 
 
-*log entries will be added Event Viewer > Application log *
+*debug entries will be added Event Viewer > Application log*
 
     <add key="addReplyPathToBottom" value="true" />
 
