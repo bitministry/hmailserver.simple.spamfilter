@@ -1,0 +1,15 @@
+packages/
+
+bin/
+debug/
+release/
+obj/
+bin/
+/**/bin/
+**/bin/
+**/bin/*
+**/**/bin/*
+/.vs/All/v14/*.suo
+/.vs/config
+*.suo
+/src/.vs
