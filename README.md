@@ -136,6 +136,9 @@ End Sub
 
 #### add hMailServer rules 
 
-1. From Contains @ > Run function: OnSpamHandler
+rule 1: From Contains @ > Run function: OnSpamHandler
 
-2. Subject contains \*bitSpam\* > Move to: Trash 
+rule 2: Subject contains \*bitSpam\* > Move to: Trash 
+
+
+thats all folks :)
