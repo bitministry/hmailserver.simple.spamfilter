@@ -16,8 +16,16 @@ All incoming emails where subject CONTAINS "<trimmed string from subject>" will 
 To add BODY RULE, **trim the line in body and forward the email** (eg spam-body@mydomain.com)
 All incoming emails where body CONTAINS "<trimmed string from body>" will be moved to Trash 
 
+## install 
 
-### register ActiveX (TLB)
+1. register the ActiveX component
+2. edit config file (mssql connection string, forwarding handlers)
+3. execute TSQL commands for MSSQL setup (create table, stored proc) 
+4. edit the hMailServer/Events/EventHandler.vbs
+5. add hMailServer rules 
+
+
+#### register ActiveX (TLB)
 
 	Framework\v4.0.30319>RegAsm.exe ????.dll /register /codebase /tlb
 
@@ -32,7 +40,7 @@ when you change hMailServer/Events/EventHandlers.vbs
 	hMailserver>settings>advanced>scripts>reload scripts 
 
 
-### BitMinistry.hMailServer.SpamHandler.dll.config
+#### BitMinistry.hMailServer.SpamHandler.dll.config
 
   <connectionStrings>
     <add name="main"
@@ -56,7 +64,7 @@ when you change hMailServer/Events/EventHandlers.vbs
   </appSettings>
 
 
-### MSSQL setup
+#### MSSQL setup
 ```tsql
 
 CREATE TABLE [dbo].[bitministry_spam_filter ](
@@ -104,3 +112,30 @@ as
 		select '*bitSpam* body: '
 
 ```
+
+#### hMailServer/Events/EventHandler.vbs
+```VBScript
+
+Option Explicit
+
+dim spamHandler 
+
+Sub OnSpamHandler(oMessage)
+	
+	
+	if ( isobject ( spamHandler ) = false ) then 
+		Set spamHandler = CreateObject("BitMinistry.hMailServer.SpamHandler.Handler") 
+		spamHandler.SetConfigFile "D:\BitMinistry.hMailServer.SpamHandler\BitMinistry.hMailServer.SpamHandler.dll.config" 
+	end if 
+	
+	spamHandler.Check oMessage 
+
+End Sub
+
+```
+
+#### add hMailServer rules 
+
+1. From Contains @ > Run function: OnSpamHandler
+
+2. Subject contains \*bitSpam\* > Move to: Trash 
